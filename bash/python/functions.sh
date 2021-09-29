@@ -3,6 +3,7 @@ function setup_pyenv() {
   if [[ ! -d "${PYENV_ROOT}" ]]; then
     git clone https://github.com/pyenv/pyenv.git "${PYENV_ROOT}"
     cd "${PYENV_ROOT}" && bash src/configure && make -C src
+    popd
   fi
 }
 

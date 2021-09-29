@@ -5,7 +5,7 @@ function setup_jenv() {
   fi
 }
 
-function setup_java_versions() {
+function setup_jvms() {
   if [[ ! -d "${JENV_ROOT}/jvms" ]]; then
     mkdir -p "${JENV_ROOT}/jvms"
   fi

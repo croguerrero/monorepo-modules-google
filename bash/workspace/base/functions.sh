@@ -17,7 +17,7 @@ function setup_workspace() {
   setup_pyenv
   setup_pyenv_virtualenv
   setup_jenv
-  setup_java_versions
+  setup_jvms
   setup_tfenv
   setup_tgenv
   setup_kubectl

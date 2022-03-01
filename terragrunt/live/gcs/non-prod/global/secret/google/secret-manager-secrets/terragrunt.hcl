@@ -41,7 +41,6 @@ inputs = {
         NETWORK_PROJECT       = "network-${dependency.random_string.outputs.result}"
         DATA_PROJECT          = "data-${dependency.random_string.outputs.result}"
         KUBEFLOW_PROJECT      = "kubeflow-${dependency.random_string.outputs.result}"
-        MANAGEMENT_PROJECT    = "management-${dependency.random_string.outputs.result}"
         ARTIFACT_PROJECT      = "artifact-${dependency.random_string.outputs.result}"
       })
       replication = {

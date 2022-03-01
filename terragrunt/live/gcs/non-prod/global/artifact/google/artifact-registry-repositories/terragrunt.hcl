@@ -17,8 +17,7 @@ dependency "random_string" {
 inputs = {
   artifact_registry_repositories = [
     for project_id in [
-      "kubeflow-${dependency.random_string.outputs.result}",
-      "management-${dependency.random_string.outputs.result}",
+      "kubeflow-${dependency.random_string.outputs.result}"
     ] :
     {
       location      = "us"

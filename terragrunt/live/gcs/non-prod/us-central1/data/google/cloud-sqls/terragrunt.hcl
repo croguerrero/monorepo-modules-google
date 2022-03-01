@@ -35,7 +35,7 @@ inputs = {
   mysqls = [
     {
       database_version                     = "MYSQL_8_0"
-      name                                 = "kubeflow-${dependency.random_string.outputs.result}-mssql-01"
+      name                                 = "kubeflow-${dependency.random_string.outputs.result}-mysql-01"
       project_id                           = dependency.data_project.outputs.project_id
       region                               = local.region
       tier                                 = "db-f1-micro"

@@ -22,10 +22,6 @@ dependency "iam_project" {
   config_path = "${get_parent_terragrunt_dir()}/non-prod/global/iam/google/project"
 }
 
-dependency "management_project" {
-  config_path = "${get_parent_terragrunt_dir()}/non-prod/global/management/google/project"
-}
-
 dependency "kubeflow_project" {
   config_path = "${get_parent_terragrunt_dir()}/non-prod/global/kubeflow/google/project"
 }
@@ -139,63 +135,6 @@ inputs = {
         ]
       }
       project = dependency.kubeflow_project.outputs.project_id
-    },
-    # management
-    {
-      name = "${dependency.management_project.outputs.project_id}-01"
-      bindings = {
-        for project_role in [
-          "roles/viewer",
-          "roles/container.admin"
-        ] :
-        project_role => [
-          "group:${dependency.identity_groups.outputs.identity_groups_map["kubeflow-admin"].group_key[0].id}"
-        ]
-      }
-      project = dependency.management_project.outputs.project_id
-    },
-    {
-      name = "${dependency.management_project.outputs.project_id}-02"
-      bindings = {
-        for project_role in [
-          "roles/viewer",
-          "roles/iap.httpsResourceAccessor",
-          "roles/container.clusterViewer"
-        ] :
-        project_role => [
-          "group:${dependency.identity_groups.outputs.identity_groups_map["kubeflow-user"].group_key[0].id}"
-        ]
-      }
-      project = dependency.management_project.outputs.project_id
-    },
-    {
-      name = "${dependency.management_project.outputs.project_id}-03"
-      bindings = {
-        for project_role in [
-          "roles/viewer"
-        ] :
-        project_role => [
-          "serviceAccount:${dependency.service_accounts.outputs.service_accounts_map["grafana"].email}"
-        ]
-      }
-      project = dependency.management_project.outputs.project_id
-    },
-    {
-      name = "${dependency.management_project.outputs.project_id}-04"
-      bindings = {
-        for project_role in [
-          "roles/logging.logWriter",
-          "roles/monitoring.metricWriter",
-          "roles/monitoring.viewer",
-          "roles/stackdriver.resourceMetadata.writer",
-          "roles/storage.objectViewer",
-          "roles/artifactregistry.reader"
-        ] :
-        project_role => [
-          "serviceAccount:${dependency.service_accounts.outputs.service_accounts_map["container-cluster"].email}"
-        ]
-      }
-      project = dependency.management_project.outputs.project_id
     },
     # data
     {

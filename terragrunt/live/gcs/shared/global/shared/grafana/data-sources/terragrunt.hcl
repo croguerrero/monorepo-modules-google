@@ -42,7 +42,6 @@ inputs = {
       "dns",
       "iam",
       "kubeflow",
-      "management",
       "network",
       "secret"
     ] :

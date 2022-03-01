@@ -31,15 +31,6 @@ inputs = {
   network_name = dependency.vpc.outputs.vpc_map["vpc-01"].network_name
   subnets = [
     {
-      subnet_name               = "management-${dependency.random_string.outputs.result}-nodes"
-      subnet_ip                 = cidrsubnet("10.0.0.0/16", local.cidr_subnetwork_width_delta, local.cidr_subnetwork_spacing)
-      subnet_region             = local.region
-      subnet_private_access     = "true"
-      subnet_flow_logs          = "true"
-      subnet_flow_logs_metadata = "INCLUDE_ALL_METADATA"
-      description               = "management-${dependency.random_string.outputs.result}-nodes"
-    },
-    {
       subnet_name               = "kubeflow-${dependency.random_string.outputs.result}-nodes"
       subnet_ip                 = cidrsubnet("10.4.0.0/16", local.cidr_subnetwork_width_delta, local.cidr_subnetwork_spacing)
       subnet_region             = local.region
@@ -50,16 +41,6 @@ inputs = {
     }
   ]
   secondary_ranges = {
-    "management-${dependency.random_string.outputs.result}-nodes" = [
-      {
-        range_name    = "management-${dependency.random_string.outputs.result}-pods"
-        ip_cidr_range = cidrsubnet("10.1.0.0/16", local.secondary_cidr_subnetwork_width_delta, local.secondary_cidr_subnetwork_spacing)
-      },
-      {
-        range_name    = "management-${dependency.random_string.outputs.result}-services"
-        ip_cidr_range = cidrsubnet("10.2.0.0/16", local.secondary_cidr_subnetwork_width_delta, local.secondary_cidr_subnetwork_spacing)
-      },
-    ]
     "kubeflow-${dependency.random_string.outputs.result}-nodes" = [
       {
         range_name    = "kubeflow-${dependency.random_string.outputs.result}-pods"

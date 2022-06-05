@@ -1,5 +1,5 @@
 module "container-cluster" {
-  source                     = "github.com/terraform-google-modules/terraform-google-kubernetes-engine.git//modules/private-cluster?ref=v15.0.1"
+  source                     = "github.com/terraform-google-modules/terraform-google-kubernetes-engine.git//modules/private-cluster?ref=v21.1.0"
   create_service_account     = var.create_service_account
   enable_private_nodes       = var.enable_private_nodes
   firewall_inbound_ports     = var.firewall_inbound_ports

@@ -12,6 +12,6 @@ module "notifications" {
 locals {
   notifications_map = {
     for notification in var.notifications :
-    notification["bucket_name"] => notification
+    "${notification["bucket_name"]}/${notification["pubsub_topic_name"]}" => notification
   }
 }

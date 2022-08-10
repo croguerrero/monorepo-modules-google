@@ -13,3 +13,6 @@ variable "custom_attributes" {
 variable "object_name_prefix" {
   type = string
 }
+variable "event_types" {
+  type = list(string)
+}

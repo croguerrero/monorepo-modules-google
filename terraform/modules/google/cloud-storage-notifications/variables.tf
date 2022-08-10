@@ -4,5 +4,6 @@ variable "notifications" {
     bucket_name       = string
     pubsub_topic_name = string
     custom_attributes = map(string)
+    object_name_prefix = string
   }))
 }

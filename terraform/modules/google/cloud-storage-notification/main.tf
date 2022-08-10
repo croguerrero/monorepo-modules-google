@@ -22,6 +22,7 @@ resource "google_storage_notification" "notification" {
     "OBJECT_ARCHIVE"
   ]
   custom_attributes = var.custom_attributes
+  object_name_prefix = var.object_name_prefix == "" ? null : var.object_name_prefix
   depends_on        = [google_pubsub_topic_iam_binding.binding]
 }
 

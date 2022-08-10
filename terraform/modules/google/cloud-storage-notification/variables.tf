@@ -10,3 +10,6 @@ variable "pubsub_topic_name" {
 variable "custom_attributes" {
   type = map(string)
 }
+variable "object_name_prefix" {
+  type = string
+}
